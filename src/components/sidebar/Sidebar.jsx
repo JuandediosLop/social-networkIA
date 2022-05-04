@@ -1,6 +1,8 @@
-import { Bookmark, Group, HelpOutline, RssFeed, School, WorkOutline, Event, PlayCircleFilledOutlined, Chat } from "@mui/icons-material";
+import { Group, HelpOutline, RssFeed, School, WorkOutline, Event, PlayCircleFilledOutlined, Chat } from "@mui/icons-material";
 import React from "react";
 import "./sidebar.css";
+import CloseFriend from "../closeFriend/CloseFriend";
+import { Users } from "../../dummyData";
 
 const Sidebar = () => {
     return (
@@ -24,10 +26,6 @@ const Sidebar = () => {
                         <span className="sidebarListItemText">Grupos</span>
                     </li>
                     <li className="sidebarListItem">
-                        <Bookmark className="sidebarIcon" />
-                        <span className="sidebarListItemText">BookMarks</span>
-                    </li>
-                    <li className="sidebarListItem">
                         <HelpOutline className="sidebarIcon" />
                         <span className="sidebarListItemText">Preguntas</span>
                     </li>
@@ -47,38 +45,9 @@ const Sidebar = () => {
                 <button className="sidebarButton">Show More</button>
                 <hr className="sidebarHr" />
                 <ul className="sidebarFriendList">
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/236/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Oscar Martinez</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/237/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Ardany Palencia</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/238/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Arale Zumeta</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/239/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Erik Chavez</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/240/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Obed Castro</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/241/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Andres Valenzuela</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/242/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Dayani Xam</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="https://picsum.photos/id/243/200/200" alt="friend" className="sidebarFriendImg" />
-                        <span className="sibedarFriendName">Hesler Lopez</span>
-                    </li>
+                    {Users.map(user => (
+                        <CloseFriend key={user.id} user={user} />
+                    ))}
                 </ul>
             </div>
         </div>

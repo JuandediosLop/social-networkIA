@@ -3,7 +3,7 @@ import React from "react";
 const FormSignUp = () => {
     return (
         <form className="sign-up-form">
-            <img src="./img/Logo.png" alt="Logo UVG" sizes="100px"/>
+            <img src="./assets/Logo.png" alt="Logo UVG" sizes="100px"/>
             <h2 className="title">Registro</h2>
             <div className="input-field">
                 <i className="fas fa-user" aria-hidden="true"></i>

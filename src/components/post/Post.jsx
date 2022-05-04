@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./post.css";
-import { MoreVert } from "@mui/icons-material";
+import { MoreVert, ThumbUpAlt } from "@mui/icons-material";
+import { Users } from "../../dummyData"
 
-const Post = () => {
+const Post = ({post}) => {
+    const [like, setLike] = useState(post.like)
+    const [isLiked, setIsLiked] = useState(false)
+    const [color, setColor] = useState("")
+
+    const likeHandler = () =>{
+        setLike(isLiked ? like - 1 : like + 1)
+        setIsLiked(!isLiked)
+        setColor(isLiked ? "" : "primary")
+    }
+
     return(
         <div className="post">
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img src="https://i.picsum.photos/id/782/200/200.jpg?hmac=Nr26GoCvc_dj_OlbYWA8FscuVWhRo7Qa-f4z6gfbSOU" alt="postProfile" className="postProfileImg" />
-                        <span className="postUsername">Nombre apellido</span>
-                        <span className="postDate"> 5 mins ago</span>
+                        <img src={Users.filter(u => u.id === post.userId)[0].profilePicture }alt="postProfile" className="postProfileImg" />
+                        <span className="postUsername">{Users.filter(u => u.id === post.userId)[0].username}</span>
+                        <span className="postDate"> {post.date}</span>
                     </div>
                     <div className="postTopRight">
                         <MoreVert />
@@ -18,19 +29,18 @@ const Post = () => {
                 </div>
                 <div className="postCenter">
                     <span className="postText">
-                        Hola este es mi primer Post en UVG+!!!
+                        {post.desc}
                     </span>
-                    <img src="./img/post/10.jpeg" alt="PostImage" className="postImg" />
+                    <img src={post.photo} alt="PostImage" className="postImg" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <img className="likeIcon" src="./img/like.png" alt="" />
-                        <img className="likeIcon" src="./img/heart.png" alt="" />
-                        <span className="postLikeCounter">A 32 personas les gusta</span>
+                        <ThumbUpAlt onClick={likeHandler} className="likeIcon" color={color} />
+                        <span className="postLikeCounter">A {like} personas les gusta</span>
                     </div>
                     <div className="postBottomRight">
                         <span className="postCommentText">
-                            9 comentarios
+                            {post.comment} comentarios
                         </span>
                     </div>
                 </div>

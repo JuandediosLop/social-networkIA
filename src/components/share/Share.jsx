@@ -4,10 +4,10 @@ import {PermMedia, Label, Room, EmojiEmotions} from "@mui/icons-material"
 
 const Share = () => {
     return(
-        <div className="share">
+        <div className="share"> 
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img src="./img/person/1.jpeg" alt="" className="shareProfileImg" />
+                    <img src="./assets/person/1.jpeg" alt="" className="shareProfileImg" />
                     <input type="text" placeholder="¿Qué tienes en mente Nombre?" className="shareInput"/>
                 </div>
                 <hr className="shareHr" />
